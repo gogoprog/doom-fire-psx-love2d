@@ -1,6 +1,6 @@
 local pixels = {}
-local w = 300
-local h = 200
+local w = 200
+local h = 100
 local sx, sy
 local palette = {}
 local colors= {
@@ -52,7 +52,7 @@ function spreadFire(x, y)
     if p == 1 then
         setPixelColor(x, y-1, 1)
     else
-        local r = math.random(0, 3)
+        local r = math.random(-3, 3)
         local dst = src -  r
         setPixelColor(x - r, y - 1, p - (r == 3 and 0 or 1))
     end
@@ -111,7 +111,7 @@ function love.load()
 end
 
 local time = 0
-local updateTime = 0.1
+local updateTime = 0.05
 local frames = 0
 local fps = 0
 function love.update(dt)

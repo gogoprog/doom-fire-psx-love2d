@@ -70,6 +70,10 @@ end
 
 function setPixelColor(x, y, colorIndex)
     local pixelIndex = 1 + x + w*y
+    if x < 0 then
+        y = y - 1
+        x = x + w
+    end
     if x >= w or y >= h or x < 0 or y < 0 then return end
     local color = palette[colorIndex]
     pixels[pixelIndex] = colorIndex
@@ -123,7 +127,7 @@ end
 
 function love.draw()
     love.graphics.draw(image, 0, 0, 0, sx, sy)
-    love.graphics.print('doom-fire-psx-lua ' .. fps .. 'fps', 0, 0)
+    love.graphics.print('doom-fire-psx-love2d ' .. fps .. 'fps', 0, 0)
 end
 
 function love.keypressed(key)
